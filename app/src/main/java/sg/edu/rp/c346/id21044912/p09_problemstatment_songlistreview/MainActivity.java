@@ -3,6 +3,7 @@ package sg.edu.rp.c346.id21044912.p09_problemstatment_songlistreview;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -63,14 +64,25 @@ public class MainActivity extends AppCompatActivity {
                 } else {
                     review = 0;
                 }
-                DBHelper dbh = new DBHelper(MainActivity.this);
-                long inserted_id = dbh.insertSong(title, singer, year, review);
+                if (!TextUtils.isEmpty(title)){
+                    if (!TextUtils.isEmpty(singer)){
+                        if ((year >= 1888) || (year != 0)){
+                            if (review != 0){
+                                DBHelper dbh = new DBHelper(MainActivity.this);
+                                long inserted_id = dbh.insertSong(title, singer, year, review);
 
-                if (inserted_id != -1){
-                    al.clear();
-                    al.addAll(dbh.getAllSong());
-                    aa.notifyDataSetChanged();
-                    Toast.makeText(MainActivity.this, "Insert successful", Toast.LENGTH_SHORT).show();
+                                if (inserted_id != -1){
+                                    al.clear();
+                                    al.addAll(dbh.getAllSong());
+                                    aa.notifyDataSetChanged();
+                                    Toast.makeText(MainActivity.this, "Insert successful", Toast.LENGTH_SHORT).show();
+                            } else {
+                                    Toast.makeText(MainActivity.this, "Invalid Star, pl", Toast.LENGTH_SHORT).show();
+                                }
+                        }
+                    }
+                }
+
                 }
             }
         });
