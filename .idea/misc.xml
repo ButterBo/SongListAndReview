@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/21044912/Desktop/Year2 modules/C346/Workspace/P09/Songlist-PS/app/src/main/res/layout/activity_main.xml" value="0.16394927536231885" />
+        <entry key="..\:/Users/21044912/Desktop/Year2 modules/C346/Workspace/P09/Songlist-PS/app/src/main/res/layout/activity_edit_song.xml" value="0.18125" />
+        <entry key="..\:/Users/21044912/Desktop/Year2 modules/C346/Workspace/P09/Songlist-PS/app/src/main/res/layout/activity_main.xml" value="0.1" />
+        <entry key="..\:/Users/21044912/Desktop/Year2 modules/C346/Workspace/P09/Songlist-PS/app/src/main/res/layout/activity_show_list.xml" value="0.18125" />
       </map>
     </option>
   </component>

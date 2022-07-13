@@ -20,10 +20,6 @@ public class Song implements Serializable {
         return _id;
     }
 
-    public void set_id(int _id) {
-        this._id = _id;
-    }
-
     public String getTitle() {
         return title;
     }
@@ -55,4 +51,9 @@ public class Song implements Serializable {
     public void setStars(int stars) {
         this.stars = stars;
     }
+
+    public String toString() {
+        String output="";
+        output = String.format("%s \n %s - %d\n",title, singers, year);
+        return output; }
 }

@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.P09ProblemStatmentSongListReview">
         <activity
+            android:name=".EditSong"
+            android:exported="false" />
+        <activity
             android:name=".ShowList"
             android:exported="false" />
         <activity

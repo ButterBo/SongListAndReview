@@ -21,7 +21,8 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:layout_margin="3dp"
-        android:hint="@string/etTitle" />
+        android:editable="false"
+        android:text="" />
 
     <TextView
         android:id="@+id/singerHeader"
@@ -37,7 +38,7 @@
         android:ems="10"
         android:inputType="textPersonName"
         android:layout_margin="3dp"
-        android:hint="@string/etSinger" />
+        android:text="" />
 
     <TextView
         android:id="@+id/yearheader"
@@ -53,7 +54,7 @@
         android:ems="10"
         android:inputType="number"
         android:layout_margin="3dp"
-        android:hint="@string/yearInput" />
+        android:text="text" />
 
     <TextView
         android:id="@+id/reviewheader"
@@ -110,20 +111,26 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnInsert"
+            android:id="@+id/btnUpdate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_margin="3dp"
-            android:text="@string/insert" />
+            android:text="Update" />
 
         <Button
-            android:id="@+id/btnReturn"
+            android:id="@+id/btnDel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:layout_margin="3dp"
-            android:text="@string/show_list" />
+            android:text="Delete" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btnCancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Cancel" />
 
 </LinearLayout>
