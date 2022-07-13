@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">P09 - ProblemStatment - SongList&amp;Review</string>
+    <string name="yearInput">Enter year of release here</string>
 </resources>
