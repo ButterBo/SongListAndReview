@@ -2,6 +2,7 @@ package sg.edu.rp.c346.id21044912.p09_problemstatment_songlistreview;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.View;
@@ -33,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
         etTitle = findViewById(R.id.etTitle);
         etSinger = findViewById(R.id.etSinger);
         etYear = findViewById(R.id.etYear);
+        btnAdd = findViewById(R.id.btnAdd);
+        btnShow = findViewById(R.id.btnReturn);
         radioGroup = findViewById(R.id.radioGroup1);
         radio1 = findViewById(R.id.radiobtn1);
         radio2 = findViewById(R.id.radiobtn2);
@@ -67,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
                 if (!TextUtils.isEmpty(title)){
                     if (!TextUtils.isEmpty(singer)){
                         if ((year >= 1888) || (year != 0)){
-                            if (review != 0){
+                            if (review > -1){
                                 DBHelper dbh = new DBHelper(MainActivity.this);
                                 long inserted_id = dbh.insertSong(title, singer, year, review);
 
@@ -77,13 +80,30 @@ public class MainActivity extends AppCompatActivity {
                                     aa.notifyDataSetChanged();
                                     Toast.makeText(MainActivity.this, "Insert successful", Toast.LENGTH_SHORT).show();
                             } else {
-                                    Toast.makeText(MainActivity.this, "Invalid Star, pl", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(MainActivity.this, "Insertion failed, please try again", Toast.LENGTH_SHORT).show();
                                 }
+                        } else {
+                                //should not be possible ow that I think about it.
+                                Toast.makeText(MainActivity.this, "Invalid Star, please try again", Toast.LENGTH_SHORT).show();
+                            }
+                    } else {
+                            Toast.makeText(MainActivity.this, "Invalid year, please enter year that is greater or equal to 1888", Toast.LENGTH_SHORT).show();
                         }
+                } else {
+                        Toast.makeText(MainActivity.this, "Please enter the name of the singer", Toast.LENGTH_SHORT).show();
                     }
-                }
 
+                } else {
+                    Toast.makeText(MainActivity.this, "{Please enter a song's title}", Toast.LENGTH_SHORT).show();
                 }
+            }
+        });
+
+        btnShow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent showi = new Intent(MainActivity.this, ShowList.class);
+                startActivity(showi);
             }
         });
 
