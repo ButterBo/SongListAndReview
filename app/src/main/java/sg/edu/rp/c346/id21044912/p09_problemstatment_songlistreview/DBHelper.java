@@ -82,28 +82,30 @@ public class DBHelper extends SQLiteOpenHelper {
         return notes;
     }
 
-//    public ArrayList<Note> getAllNotes(String keyword) {
-//        ArrayList<Note> notes = new ArrayList<Note>();
-//
-//        SQLiteDatabase db = this.getReadableDatabase();
-//        String[] columns= {COLUMN_ID, COLUMN_NOTE_CONTENT};
-//        String condition = COLUMN_NOTE_CONTENT + " Like ?";
-//        String[] args = { "%" +  keyword + "%"};
-//        Cursor cursor = db.query(TABLE_NOTE, columns, condition, args,
-//                null, null, null, null);
-//
-//        if (cursor.moveToFirst()) {
-//            do {
-//                int id = cursor.getInt(0);
-//                String noteContent = cursor.getString(1);
-//                Note note = new Note(id, noteContent);
-//                notes.add(note);
-//            } while (cursor.moveToNext());
-//        }
-//        cursor.close();
-//        db.close();
-//        return notes;
-//    }
+    public ArrayList<Song> getAllSong(int keyword) {
+        ArrayList<Song> notes = new ArrayList<Song>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String[] columns= {COLUMN_ID, COLUMN_TITLE, COLUMN_SINGER, COLUMN_YEAR, COLUMN_STARS};
+        String condition = COLUMN_STARS + " Like ?";
+        String[] args = { "%" +  keyword + "%"};
+        Cursor cursor = db.query(TABLE_SONG, columns, condition, args,
+                null, null, null, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                String title = cursor.getString(1);
+                String singers = cursor.getString(1);
+                int year = Integer.parseInt(cursor.getString(1));
+                int stars = Integer.parseInt(cursor.getString(1));
+                Song song = new Song(title, singers, year, stars);
+                notes.add(song);
+            } while (cursor.moveToNext());
+        }
+        cursor.close();
+        db.close();
+        return notes;
+    }
 //
 //
 //    public int updateNote(Note data){
