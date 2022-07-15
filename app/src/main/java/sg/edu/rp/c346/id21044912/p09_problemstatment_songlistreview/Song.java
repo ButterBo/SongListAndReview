@@ -24,10 +24,6 @@ public class Song implements Serializable {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public String getSingers() {
         return singers;
     }

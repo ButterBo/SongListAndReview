@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -73,5 +74,44 @@ public class EditSong extends AppCompatActivity {
             r2.setChecked(false);
             r1.setChecked(true);
         }
+
+        btnUpd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DBHelper dbh = new DBHelper(EditSong.this);
+                data.setSingers(title.getText().toString());
+                data.setYear(Integer.parseInt(year.getText().toString()));
+                if (r5.isChecked()){
+                    data.setStars(5);
+                } else if (r4.isChecked()){
+                    data.setStars(4);
+                } else if (r3.isChecked()){
+                    data.setStars(3);
+                } else if (r2.isChecked()){
+                    data.setStars(2);
+                } else {
+                    data.setStars(2);
+                }
+                dbh.updateSong(data);
+                dbh.close();
+                finish();
+            }
+        });
+
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                DBHelper dbh = new DBHelper(EditSong.this);
+                dbh.deleteSong(data.get_id());
+                finish();
+            }
+        });
+
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 }
