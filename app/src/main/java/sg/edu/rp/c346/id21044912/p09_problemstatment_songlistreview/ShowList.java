@@ -8,9 +8,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -18,8 +18,8 @@ public class ShowList extends AppCompatActivity {
 
     Button btn5, btnRetrieve, btnGoToInsert;
     Spinner spin;
-    ArrayList<Song> al;
     ListView lv;
+    ArrayList<Song> al;
     ArrayAdapter<Song> aa;
 
     @Override
@@ -34,8 +34,6 @@ public class ShowList extends AppCompatActivity {
         al = new ArrayList<Song>();
         aa = new ArrayAdapter<Song>(this, android.R.layout.simple_list_item_1, al);
         lv.setAdapter(aa);
-
-        Intent intentReceived = getIntent();
 
         btnGoToInsert.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -62,9 +60,9 @@ public class ShowList extends AppCompatActivity {
                 DBHelper dbh = new DBHelper(ShowList.this);
                 al.clear();
                 //al.addAll(dbh.getAllNotes());
-                int filterText = 5;
-                al.addAll(dbh.getAllSong(filterText));
+                al.addAll(dbh.getAll5Stars());
                 aa.notifyDataSetChanged();
+                Toast.makeText(ShowList.this, "Displaying all 5 star songs!", Toast.LENGTH_LONG).show();
             }
         }));
 
@@ -73,11 +71,19 @@ public class ShowList extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int
                     position, long identity) {
                 Song data = al.get(position);
-                Intent i = new Intent(ShowList.this,
-                        EditSong.class);
+                Intent i = new Intent(ShowList.this, EditSong.class);
                 i.putExtra("data", data);
                 startActivity(i);
             }
         });
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        DBHelper dbh = new DBHelper(ShowList.this);
+        al.clear();
+        al.addAll(dbh.getAllSong());
+        aa.notifyDataSetChanged();
     }
 }

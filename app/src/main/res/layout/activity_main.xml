@@ -69,35 +69,35 @@
         android:orientation="horizontal">
 
         <RadioButton
-            android:id="@+id/radiobtn1"
+            android:id="@+id/star1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/_1" />
 
         <RadioButton
-            android:id="@+id/radiobtn2"
+            android:id="@+id/star2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/_2" />
 
         <RadioButton
-            android:id="@+id/radiobtn3"
+            android:id="@+id/star3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/_3" />
 
         <RadioButton
-            android:id="@+id/radiobtn4"
+            android:id="@+id/star4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/_4" />
 
         <RadioButton
-            android:id="@+id/radiobtn5"
+            android:id="@+id/star5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

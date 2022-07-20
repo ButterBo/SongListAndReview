@@ -7,15 +7,14 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 
 public class EditSong extends AppCompatActivity {
 
-    EditText title, name, year;
-    RadioGroup radioGroup2;
-    RadioButton r1,r2,r3,r4,r5;
-    Button btnUpd, btnDelete, btnCancel;
+    EditText etSongTitle, etSinger, etYear;
+    RadioGroup rgStars;
+    Button btnUpdate, btnDelete, btnCancel;
     Song data;
 
     @Override
@@ -23,94 +22,57 @@ public class EditSong extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_song);
 
-        title = findViewById(R.id.etTitle);
-        name = findViewById(R.id.etSinger);
-        year = findViewById(R.id.etYear);
-        radioGroup2 = findViewById(R.id.radioGroup2);
-        r1 = findViewById(R.id.btn1);
-        r2 = findViewById(R.id.btn2);
-        r3 = findViewById(R.id.btn3);
-        r4 = findViewById(R.id.btn4);
-        r5 = findViewById(R.id.btn5);
-        btnUpd=findViewById(R.id.btnUpdate);
+        btnUpdate = findViewById(R.id.btnUpdate);
         btnDelete = findViewById(R.id.btnDel);
         btnCancel = findViewById(R.id.btnCancel);
+        etSongTitle = findViewById(R.id.editTitle);
+        etSinger = findViewById(R.id.editSinger);
+        etYear = findViewById(R.id.etYear);
+        rgStars = findViewById(R.id.editRadioStars);
 
         Intent i = getIntent();
         data = (Song) i.getSerializableExtra("data");
 
-        title.setText(data.getTitle());
-        name.setText(data.getSingers());
-        year.setText(data.getYear());
-        int star = data.getStars();
-        if (star==5){
-            r5.setChecked(true);
-            r4.setChecked(false);
-            r3.setChecked(false);
-            r2.setChecked(false);
-            r1.setChecked(false);
-        } else if (star == 4){
-            r5.setChecked(false);
-            r4.setChecked(true);
-            r3.setChecked(false);
-            r2.setChecked(false);
-            r1.setChecked(false);
-        } else if (star == 3){
-            r5.setChecked(false);
-            r4.setChecked(false);
-            r3.setChecked(true);
-            r2.setChecked(false);
-            r1.setChecked(false);
-        } else if (star == 2){
-            r5.setChecked(false);
-            r4.setChecked(false);
-            r3.setChecked(false);
-            r2.setChecked(true);
-            r1.setChecked(false);
-        } else {
-            r5.setChecked(false);
-            r4.setChecked(false);
-            r3.setChecked(false);
-            r2.setChecked(false);
-            r1.setChecked(true);
-        }
+        etSongTitle.setText(data.getTitle());
+        etSinger.setText(data.getSingers());
+        etYear.setText(data.getYear() + "");
+        rgStars.check(data.getStars());
 
-        btnUpd.setOnClickListener(new View.OnClickListener() {
+        btnUpdate.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 DBHelper dbh = new DBHelper(EditSong.this);
-                data.setSingers(title.getText().toString());
-                data.setYear(Integer.parseInt(year.getText().toString()));
-                if (r5.isChecked()){
-                    data.setStars(5);
-                } else if (r4.isChecked()){
-                    data.setStars(4);
-                } else if (r3.isChecked()){
-                    data.setStars(3);
-                } else if (r2.isChecked()){
-                    data.setStars(2);
-                } else {
-                    data.setStars(2);
-                }
+                data.setTitle(etSongTitle.getText().toString());
+                data.setSingers(etSinger.getText().toString());
+                data.setYear(Integer.parseInt(etYear.getText().toString()));
+                data.setStars(rgStars.getCheckedRadioButtonId());
+
                 dbh.updateSong(data);
                 dbh.close();
-                finish();
+
+                Intent i = new Intent(EditSong.this, ShowList.class);
+                startActivity(i);
+                Toast.makeText(EditSong.this, etSongTitle.getText() + " has been updated successfully!", Toast.LENGTH_LONG).show();
             }
         });
 
         btnDelete.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
+            public void onClick(View v) {
                 DBHelper dbh = new DBHelper(EditSong.this);
                 dbh.deleteSong(data.get_id());
-                finish();
+
+                Intent i = new Intent(EditSong.this, ShowList.class);
+                startActivity(i);
+                Toast.makeText(EditSong.this, etSongTitle.getText() + " has been deleted", Toast.LENGTH_LONG).show();
             }
         });
 
         btnCancel.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                finish();
+            public void onClick(View v) {
+                Intent i = new Intent(EditSong.this, ShowList.class);
+                startActivity(i);
             }
         });
     }

@@ -15,14 +15,13 @@
         android:text="@string/song_title" />
 
     <EditText
-        android:id="@+id/etTitle"
+        android:id="@+id/editTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="text"
         android:layout_margin="3dp"
-        android:editable="false"
-        android:text="" />
+        />
 
     <TextView
         android:id="@+id/singerHeader"
@@ -32,7 +31,7 @@
         android:text="@string/singers" />
 
     <EditText
-        android:id="@+id/etSinger"
+        android:id="@+id/editSinger"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -48,7 +47,7 @@
         android:text="@string/year" />
 
     <EditText
-        android:id="@+id/etYear"
+        android:id="@+id/editYear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
@@ -64,41 +63,41 @@
         android:text="@string/stars" />
 
     <RadioGroup
-        android:id="@+id/radioGroup2"
+        android:id="@+id/editRadioStars"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <RadioButton
-            android:id="@+id/btn1"
+            android:id="@+id/star1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/_1" />
 
         <RadioButton
-            android:id="@+id/btn2"
+            android:id="@+id/star2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/_2" />
 
         <RadioButton
-            android:id="@+id/btn3"
+            android:id="@+id/star3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/_3" />
 
         <RadioButton
-            android:id="@+id/btn4"
+            android:id="@+id/star4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/_4" />
 
         <RadioButton
-            android:id="@+id/btn5"
+            android:id="@+id/star5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

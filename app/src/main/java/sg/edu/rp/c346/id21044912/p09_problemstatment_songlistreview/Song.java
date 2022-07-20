@@ -28,6 +28,8 @@ public class Song implements Serializable {
         return singers;
     }
 
+    public void setTitle(String title) { this.title = title; }
+
     public void setSingers(String singers) {
         this.singers = singers;
     }
@@ -49,7 +51,20 @@ public class Song implements Serializable {
     }
 
     public String toString() {
-        String output="";
-        output = String.format("%s \n %s - %d\n",title, singers, year);
-        return output; }
+        String starRating = "";
+
+        if (stars == R.id.star1) {
+            starRating = "*";
+        } else if (stars == R.id.star2) {
+            starRating = "**";
+        } else if (stars == R.id.star3) {
+            starRating = "***";
+        } else if (stars == R.id.star4) {
+            starRating = "****";
+        } else if (stars == R.id.star5) {
+            starRating = "*****";
+        }
+
+        return title + "\n" + singers + " - " + year + "\n" + starRating;
+    }
 }
