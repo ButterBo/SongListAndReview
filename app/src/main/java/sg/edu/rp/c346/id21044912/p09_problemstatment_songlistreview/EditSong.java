@@ -27,7 +27,7 @@ public class EditSong extends AppCompatActivity {
         btnCancel = findViewById(R.id.btnCancel);
         etSongTitle = findViewById(R.id.editTitle);
         etSinger = findViewById(R.id.editSinger);
-        etYear = findViewById(R.id.etYear);
+        etYear = findViewById(R.id.editYear);
         rgStars = findViewById(R.id.editRadioStars);
 
         Intent i = getIntent();

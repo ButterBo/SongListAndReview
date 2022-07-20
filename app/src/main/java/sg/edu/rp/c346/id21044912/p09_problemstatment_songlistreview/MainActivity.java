@@ -4,13 +4,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
 
@@ -36,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         btnAdd = findViewById(R.id.btnAdd);
         btnShow = findViewById(R.id.btnReturn);
         radioGroup = findViewById(R.id.radioGroup1);
-        lv = findViewById(R.id.lv);
+        //lv = findViewById(R.id.lv);
 
 //        al = new ArrayList<Song>();
 //        aa = new ArrayAdapter<Song>(this, android.R.layout.simple_list_item_1, al);
