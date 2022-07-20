@@ -34,11 +34,6 @@ public class MainActivity extends AppCompatActivity {
         btnAdd = findViewById(R.id.btnAdd);
         btnShow = findViewById(R.id.btnReturn);
         radioGroup = findViewById(R.id.radioGroup1);
-        //lv = findViewById(R.id.lv);
-
-//        al = new ArrayList<Song>();
-//        aa = new ArrayAdapter<Song>(this, android.R.layout.simple_list_item_1, al);
-//        lv.setAdapter(aa);
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
                 long insert_id = dbh.insertSong(title, singer, year, review);
 
                 if (insert_id != -1) {
-                    Toast.makeText(MainActivity.this, "Added" + title + " to the Song list successfully", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Added " + title + " to the Song list successfully", Toast.LENGTH_LONG).show();
 
                     etTitle.setText("");
                     etSinger.setText("");

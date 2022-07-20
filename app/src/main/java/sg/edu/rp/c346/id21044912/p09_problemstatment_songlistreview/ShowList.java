@@ -38,7 +38,8 @@ public class ShowList extends AppCompatActivity {
         btnGoToInsert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                finish();
+                Intent s = new Intent(ShowList.this, MainActivity.class);
+                startActivity(s);
             }
         });
 

@@ -8,10 +8,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class EditSong extends AppCompatActivity {
 
+//    TextView etID;
     EditText etSongTitle, etSinger, etYear;
     RadioGroup rgStars;
     Button btnUpdate, btnDelete, btnCancel;
@@ -22,6 +24,7 @@ public class EditSong extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_song);
 
+//        etID = findViewById(R.id.textViewID);
         btnUpdate = findViewById(R.id.btnUpdate);
         btnDelete = findViewById(R.id.btnDel);
         btnCancel = findViewById(R.id.btnCancel);
@@ -33,6 +36,7 @@ public class EditSong extends AppCompatActivity {
         Intent i = getIntent();
         data = (Song) i.getSerializableExtra("data");
 
+        //etID.setText(data.get_id());
         etSongTitle.setText(data.getTitle());
         etSinger.setText(data.getSingers());
         etYear.setText(data.getYear() + "");
