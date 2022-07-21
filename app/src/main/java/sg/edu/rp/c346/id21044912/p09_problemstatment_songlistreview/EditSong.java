@@ -36,7 +36,7 @@ public class EditSong extends AppCompatActivity {
         Intent i = getIntent();
         data = (Song) i.getSerializableExtra("data");
 
-        etID.setText(data.get_id());
+        etID.setText(data.get_id()+"");
         etSongTitle.setText(data.getTitle());
         etSinger.setText(data.getSingers());
         etYear.setText(data.getYear() + "");
