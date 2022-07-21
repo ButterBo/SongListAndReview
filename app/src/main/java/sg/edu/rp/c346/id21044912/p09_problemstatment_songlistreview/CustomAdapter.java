@@ -48,7 +48,24 @@ public class CustomAdapter extends ArrayAdapter {
         tvTitle.setText(currentVersion.getTitle());
         tvSingers.setText(currentVersion.getSingers());
         tvYearsReleased.setText(currentVersion.getYear()+"");
-        tvStars.setText(currentVersion.getStars());
+
+        int stars = currentVersion.getStars();
+        String rating = "";
+
+        if (stars == R.id.star1) {
+            rating = " *";
+        } else if (stars == R.id.star2) {
+            rating = " * *";
+        } else if (stars == R.id.star3) {
+            rating = " * * *";
+        } else if (stars == R.id.star4) {
+            rating = "* * * *";
+        } else if (stars == R.id.star5) {
+            rating = "* * * * *";
+        }
+
+        tvStars.setText(rating);
+//        tvStars.setText((currentVersion.getStars()));
 
         return rowView;
     }

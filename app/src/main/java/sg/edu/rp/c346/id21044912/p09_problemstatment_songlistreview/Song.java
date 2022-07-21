@@ -52,6 +52,14 @@ public class Song implements Serializable {
         this.stars = stars;
     }
 
+    public String stars(int stars){
+        String review= "";
+        for (int i =1; i <= this.stars; i++){
+            review += "*";
+        }
+        return review;
+    }
+
     public String toString() {
         String starRating = "";
 

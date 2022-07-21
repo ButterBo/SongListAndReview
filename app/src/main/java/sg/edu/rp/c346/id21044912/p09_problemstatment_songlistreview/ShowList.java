@@ -21,6 +21,7 @@ public class ShowList extends AppCompatActivity {
     ListView lv;
     ArrayList<Song> al;
     ArrayAdapter<Song> aa;
+    CustomAdapter customList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,8 +33,9 @@ public class ShowList extends AppCompatActivity {
         spin = findViewById(R.id.spinner);
         lv = findViewById(R.id.lv);
         al = new ArrayList<Song>();
-        aa = new ArrayAdapter<Song>(this, android.R.layout.simple_list_item_1, al);
-        lv.setAdapter(aa);
+        customList = new CustomAdapter(this, R.layout.row,al);
+//        aa = new ArrayAdapter<Song>(this, android.R.layout.simple_list_item_1, al);
+        lv.setAdapter(customList);
 
         btnGoToInsert.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -51,7 +53,7 @@ public class ShowList extends AppCompatActivity {
                 //al.addAll(dbh.getAllNotes());
                 al.addAll(dbh.getAllSong());
 
-                aa.notifyDataSetChanged();
+                customList.notifyDataSetChanged();
             }
         });
 
@@ -62,7 +64,7 @@ public class ShowList extends AppCompatActivity {
                 al.clear();
                 //al.addAll(dbh.getAllNotes());
                 al.addAll(dbh.getAll5Stars());
-                aa.notifyDataSetChanged();
+                customList.notifyDataSetChanged();
                 Toast.makeText(ShowList.this, "Displaying all 5 star songs!", Toast.LENGTH_LONG).show();
             }
         }));
@@ -85,6 +87,6 @@ public class ShowList extends AppCompatActivity {
         DBHelper dbh = new DBHelper(ShowList.this);
         al.clear();
         al.addAll(dbh.getAllSong());
-        aa.notifyDataSetChanged();
+        customList.notifyDataSetChanged();
     }
 }
