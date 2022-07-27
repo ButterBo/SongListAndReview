@@ -25,7 +25,7 @@ public class CustomAdapter extends ArrayAdapter {
         layout_id = resource;
         songList = objects;
     }
-
+//test
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         // Obtain the LayoutInflater object
